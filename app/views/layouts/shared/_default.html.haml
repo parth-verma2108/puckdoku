@@ -1,0 +1,92 @@
+- current_user = User.last
+#preloader
+  .sk-three-bounce
+    .sk-child.sk-bounce1
+    .sk-child.sk-bounce2
+    .sk-child.sk-bounce3
+#main-wrapper
+  .nav-header
+    %a.brand-logo{:href => ""}
+      .logo-compact
+        =image_tag "stimulus.png", :width => "400"
+      .brand-title
+        / =image_tag "logo-text.png"
+    .nav-control
+      .hamburger
+        %span.line
+        %span.line
+        %span.line
+  .header
+    .header-content
+      %nav.navbar.navbar-expand
+        .collapse.navbar-collapse.justify-content-between
+          .header-left
+            .dashboard_bar
+              - case controller.controller_name.underscore
+              - when "users"
+                .color-red Users
+              - when "roles"
+                .color-red Roles
+              - when "nip_profiles"
+                .color-red Nipp Profiles
+              - when "accountabilities"
+                .color-red Accountability
+              - when "tdees"
+                .color-red TDEE
+              - when "journeys"
+                .color-red Journey
+              - when "fitnesses"
+                .color-red Fitness
+              - when "nutritions"
+                .color-red Nutrition
+              - when "reports"
+                .color-red Reports
+              - when "goals"
+                .color-red Goals
+              - when "comorbidities"
+                .color-red Comorbidities
+              - when "mindfullness"
+                .color-red Mindfullness
+              - when "food_logs"
+                .color-red Food Logs
+              - when "fitness_logs"
+                .color-red Fitness Logs
+              - when "ai_recommendation"
+                .color-red ChatGPT
+          %ul.navbar-nav.header-right
+            %li.nav-item.dropdown.header-profile
+              %a.nav-link{"data-toggle" => "dropdown", :href => "javascript:void(0)", :role => "button"}
+                =image_tag "user-icon.png", :width => "20"
+                .header-info
+                  %span.text-black
+                    %strong= current_user.first_name&.concat(" #{current_user.last_name}") || 'undefined'
+                  %p.fs-12.mb-0
+                    / - if current_user.roles.present?
+                    /   = current_user.roles.first.name.underscore.humanize
+              .dropdown-menu.dropdown-menu-right
+                / = link_to edit_user_path(current_user), class: 'dropdown-item ai-icon' do
+                /   %svg#icon-user1.text-primary{:fill => "none", :height => "18", :stroke => "currentColor", "stroke-linecap" => "round", "stroke-linejoin" => "round", "stroke-width" => "2", :viewbox => "0 0 24 24", :width => "18", :xmlns => "http://www.w3.org/2000/svg"}
+                /     %path{:d => "M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"}
+                /     %circle{:cx => "12", :cy => "7", :r => "4"}
+                /   %span.ml-2 Profile
+                / = link_to destroy_user_session_path, data: {turbo: false}, class: 'dropdown-item ai-icon' do
+                /   %svg#icon-logout.text-danger{:fill => "none", :height => "18", :stroke => "currentColor", "stroke-linecap" => "round", "stroke-linejoin" => "round", "stroke-width" => "2", :viewbox => "0 0 24 24", :width => "18", :xmlns => "http://www.w3.org/2000/svg"}
+                /     %path{:d => "M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"}
+                /     %polyline{:points => "16 17 21 12 16 7"}
+                /     %line{:x1 => "21", :x2 => "9", :y1 => "12", :y2 => "12"}
+                /   %span.ml-2 Logout
+  .content-body
+    .container-fluid
+      .row
+        %div#my-alert
+          - if notice
+            .alert.alert-success.alert-dismissible.fade.show.m-1{:role => "alert"}
+              = notice
+              %button.close{"aria-label" => "Close", "data-dismiss" => "alert", :type => "button"}
+                %span{"aria-hidden" => "true"} ×
+          - if alert
+            .alert.alert-danger.alert-dismissible.fade.show.m-1{:role => "alert"}
+              = alert
+              %button.close{"aria-label" => "Close", "data-dismiss" => "alert", :type => "button"}
+                %span{"aria-hidden" => "true"} ×
+        = yield

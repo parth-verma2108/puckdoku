@@ -1,0 +1,15 @@
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: stimulus_production
+  pool: 5
+  username: postgres
+  password: 9927734396
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: stimulus_development
+  pool: 5
+  username: postgres
+  password: 9927734396
+# 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

@@ -1,0 +1,23 @@
+.container-fluid
+  .page-titles
+    %ol.breadcrumb
+      / %li.breadcrumb-item
+      /   %a{:href => "javascript:void(0)"} Posts
+      / %li.breadcrumb-item.active
+      /   %a{:href => "javascript:void(0)"} Data
+  .row
+    .col-12
+      .card-body
+        .horizontal-image.d-flex
+          .mb-5= image_tag "SJS.svg", width: '120'
+          = image_tag "NYR.svg", width: '120'
+          Stanley Cup Winner
+
+        .content-body
+          .vertical-image.vertical-wrap
+            .image= image_tag "DAL.svg", width: '120'
+            .image= image_tag "TBL.svg", width: '120'
+            .image= image_tag "PIT.svg", width: '120'
+          .container
+            - (1..10).each do |ele|
+              .item{'data-controller': 'play', 'data-action': 'click->play#showPlayerName mouseover->play#highlight mouseout->play#removeHighlight', 'data-play-target': 'nba_player', 'data-play-player-value': "#{ele}"}

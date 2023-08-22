@@ -1,0 +1,12 @@
+%nav.navbar.navbar-expand-lg.bg-body-tertiary
+  .container-fluid
+    %a.navbar-brand{:href => "#"}
+      =image_tag "stimulus.png", class: 'd-inline-block align-text-top', :width => "200"
+    %button.navbar-toggler{"aria-controls" => "navbarText", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-bs-target" => "#navbarText", "data-bs-toggle" => "collapse", :type => "button"}
+      %span.navbar-toggler-icon
+    #navbarText.collapse.navbar-collapse
+      %h3 Puckdoku
+      %ul.navbar-nav.me-auto.mb-2.mb-lg-0
+        %li.nav-item
+      %span.navbar-text
+        %h5= link_to 'How to play / Login'
