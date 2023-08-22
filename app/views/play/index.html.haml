@@ -1,3 +1,4 @@
+- team_matrix = Coordinate::TEAM_COORDINATES
 .container-fluid
   .page-titles
     %ol.breadcrumb
@@ -14,10 +15,12 @@
           Stanley Cup Winner
 
         .content-body
-          .vertical-image.vertical-wrap
-            .image= image_tag "DAL.svg", width: '120'
-            .image= image_tag "TBL.svg", width: '120'
-            .image= image_tag "PIT.svg", width: '120'
           .container
-            - (1..10).each do |ele|
-              .item{'data-controller': 'play', 'data-action': 'click->play#showPlayerName mouseover->play#highlight mouseout->play#removeHighlight', 'data-play-target': 'nba_player', 'data-play-player-value': "#{ele}"}
+            .vertical-image.vertical-wrap
+              .image= image_tag "DAL.svg", width: '120'
+              .image= image_tag "TBL.svg", width: '120'
+              .image= image_tag "PIT.svg", width: '120'
+            - team_matrix.each do |ele|
+              .item{'data-controller': 'play', 'data-action': 'click->play#showModal mouseover->play#highlight mouseout->play#removeHighlight', 'data-play-target': 'nba_player', 'data-play-player-value': "#{ele}"}
+
+  = render 'modal'

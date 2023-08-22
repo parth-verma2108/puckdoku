@@ -1,0 +1,11 @@
+.modal{'data-controller': 'play'}
+  .modal-dialog{ style: "margin-top: 10rem"}
+    .modal-content
+      .modal-header.text-center{style: "border-bottom: none"}
+        %button.btn-close{"aria-label" => "Close", "data-bs-dismiss" => "modal", :type => "button", 'data-action': 'click->play#hideModal', 'data-turbo': 'false'}
+      .modal-body.text-center
+        %h5.modal-title DAL - SJS
+        %p Player must play one regular or postseason season NHL game to count for team.
+        = text_field_tag :player, '', placeholder: 'Please select...', data: { target: 'name', action: 'input->play#showPlayerName' }
+      .modal-footer{style: "border-top: none"}
+        %button.btn.btn-primary{:type => "button"} Cancel

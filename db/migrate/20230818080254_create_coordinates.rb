@@ -3,7 +3,7 @@ class CreateCoordinates < ActiveRecord::Migration[7.0]
     create_table :coordinates do |t|
       t.references :game, null: false, foreign_key: true
       t.string :dimension, array: true, default: []
-      t.references :nba_player, null: false, foreign_key: true
+      t.references :nhl_player, null: false, foreign_key: true
       t.references :user, null: false, foreign_key: true
 
       t.timestamps

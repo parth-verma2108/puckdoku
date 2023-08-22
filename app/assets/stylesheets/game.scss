@@ -29,15 +29,32 @@
   display: flex;
   flex-direction: column;
   position: absolute;
-  margin-left: 34rem;
+  margin-left: -138px;
 }
 
 .vertical-wrap.image{
   margin: 20px;
+  width: 43%;
 }
 
 .horizontal-image{
   text-align: center;
   justify-content: center;
   align-items: center;
+}
+
+.image{
+  margin: 20px 20px 20px auto;
+}
+
+.modal{
+  display: none;
+}
+
+.blur-background{
+  background-color: rgba(0, 0, 0, 0.4);
+  -webkit-transition: 0.5s;
+  overflow: auto;
+  transition: all 0.3s linear;
+
 }
