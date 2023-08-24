@@ -3,4 +3,6 @@ Rails.application.routes.draw do
   root "play#index"
 
   resources :plays, only: [:index]
+
+  get '/correct_player', to: 'play#correct_player?'
 end

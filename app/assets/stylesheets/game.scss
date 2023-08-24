@@ -56,5 +56,9 @@
   -webkit-transition: 0.5s;
   overflow: auto;
   transition: all 0.3s linear;
+}
 
+.shift-right{
+  position: absolute;
+  right: 0;
 }
