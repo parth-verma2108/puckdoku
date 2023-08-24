@@ -20,9 +20,9 @@ export default class extends Controller {
     const modalTitle = document.getElementsByClassName('modal-title')
     const csrfToken = document.querySelector("[name='csrf-token']").content
     const selectButton = document.getElementsByClassName(`select-button-${this.playerIdValue}`)
-    console.log("SELECTED", this.playerNameValue)
+    const block = document.getElementsByClassName('player-block')
 
-    fetch(`${this.playerStatusUrlValue}?player_name=${this.playerNameValue.toString()}&teams=${modalTitle.toString()}`, {
+    fetch(`${this.playerStatusUrlValue}?player_name=${this.playerNameValue.toString()}&teams=${modalTitle[0].innerHTML.toString()}`, {
       method: "GET",
       headers: {
         "X-CSRF-Token": csrfToken,
@@ -33,15 +33,20 @@ export default class extends Controller {
     .then(function(response) {
       return response.json();
     }).then(function(data) {
-      console.log(data)
+      selectButton[0].classList.remove("btn", "btn-success", "text-white")
+      
       if (data.is_correct_player){
-        console.log("SUCCESS")
+        console.log("DATA", data)
+        selectButton[0].classList.add("text-success")
+        selectButton[0].innerHTML = "Correct"
+        block[0].innerHTML = `<img width="120" src="${data.player.name}">`
+        hideModal()
       }else{
-        selectButton[0].classList.remove("btn", "btn-success", "text-white")
         selectButton[0].classList.add("text-danger")
         selectButton[0].innerHTML = "Incorrect"
-        selectButton[0].classList.remove("select-button")
       }
+      
+      selectButton[0].classList.remove("select-button")
     });
   }
 

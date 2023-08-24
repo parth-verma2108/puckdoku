@@ -20,6 +20,6 @@
               .image= image_tag "TBL.svg", width: '120'
               .image= image_tag "PIT.svg", width: '120'
             - team_matrix.each do |ele|
-              .item{'data-controller': 'play', 'data-action': 'click->play#showModal mouseover->play#highlight mouseout->play#removeHighlight', 'data-play-player-value': "#{ele}"}
+              .item.player-block{'data-controller': 'play', 'data-action': 'click->play#showModal mouseover->play#highlight mouseout->play#removeHighlight', 'data-play-player-value': "#{ele}"}
 
   = render partial: 'modal', locals: { players: @teams }
